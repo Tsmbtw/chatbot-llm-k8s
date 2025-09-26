@@ -2,11 +2,21 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: chatbot-ingress
+  namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   rules:
   - host: chatbot.local
     http:
       paths:
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: chatbot-backend
+            port:
+              number: 8000
       - path: /
         pathType: Prefix
         backend:

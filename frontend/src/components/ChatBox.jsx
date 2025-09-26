@@ -15,7 +15,7 @@ function ChatBox() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://chatbot-backend-service:8000/chat", {
+      const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text: userMessage.text }),
@@ -58,5 +58,16 @@ function ChatBox() {
           onKeyDown={(e) => e.key === "Enter" && sendMessage()}
         />
         <button
-          className="
+          className="bg-blue-600 hover:bg-blue-700 px-4 rounded-br-2xl text-white"
+          onClick={sendMessage}
+          disabled={loading}
+        >
+          Send
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default ChatBox;
 

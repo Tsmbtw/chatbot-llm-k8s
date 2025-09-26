@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: chatbot-frontend
-        image: chatbot-frontend:latest
+        image: omarrrh/chatbot-frontend:v2
         ports:
         - containerPort: 80
 ---
